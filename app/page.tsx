@@ -1,65 +1,128 @@
-import Image from "next/image";
+import Container from "@/app/components/container";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen py-24">
+      <Container className="space-y-32">
+        <Hero />
+        <SelectedWork />
+        <EngineeringPrinciples />
+        <About />
+        <Contact />
+      </Container>
+    </main>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="space-y-6">
+      <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
+        Full-stack engineer with a frontend focus, building production-grade
+        systems with Next.js & TypeScript.
+      </h1>
+
+      <p className="text-lg text-zinc-400 max-w-2xl">
+        I specialize in performant UI systems, SSR/CSR hybrid rendering, and
+        clean API integration — with hands-on backend experience in Node.js and
+        MongoDB.
+      </p>
+
+      <div className="flex gap-6 pt-4">
+        <a
+          href="#work"
+          className="text-sm text-indigo-400 hover:text-indigo-300 transition"
+        >
+          View Work →
+        </a>
+
+        <a
+          href="mailto:your@email.com"
+          className="text-sm text-zinc-400 hover:text-white transition"
+        >
+          Contact
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function SelectedWork() {
+  return (
+    <section id="work" className="space-y-8">
+      <h2 className="text-2xl font-semibold">Selected Work</h2>
+
+      <div className="space-y-6">
+        <Link
+          href="/projects/hacker-news"
+          className="block border border-zinc-800 rounded-xl p-6 hover:border-zinc-600 transition"
+        >
+          <h3 className="text-lg font-medium">Hacker News Portal</h3>
+          <p className="text-zinc-400 mt-2">
+            Production-grade Hacker News interface built with Next.js App
+            Router, leveraging SSR for homepage performance and client-side
+            search for interactive filtering.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        </Link>
+
+        <Link
+          href="/projects/ai-resume-studio"
+          className="block border border-zinc-800 rounded-xl p-6 hover:border-zinc-600 transition"
+        >
+          <h3 className="text-lg font-medium">AI Resume Studio</h3>
+          <p className="text-zinc-400 mt-2">
+            Full-stack resume builder with JWT authentication, AI-assisted
+            content enhancement, and robust API integration using Node.js and
+            MongoDB.
+          </p>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function EngineeringPrinciples() {
+  return (
+    <section className="space-y-6">
+      <h2 className="text-2xl font-semibold">Engineering Principles</h2>
+
+      <ul className="space-y-3 text-zinc-400">
+        <li>
+          • Server Components by default; client components only when necessary.
+        </li>
+        <li>• Rendering strategy defined before component structure.</li>
+        <li>• Performance budgets considered early.</li>
+        <li>• Centralized API abstraction for maintainability.</li>
+        <li>• Accessibility integrated from the start.</li>
+      </ul>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section className="space-y-6">
+      <h2 className="text-2xl font-semibold">About</h2>
+
+      <p className="text-zinc-400 max-w-2xl">
+        I am an early-career engineer focused on building scalable,
+        production-ready frontend systems. I enjoy working in startup
+        environments where I can take ownership of features end-to-end, from UI
+        implementation to API integration.
+      </p>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section className="space-y-6">
+      <h2 className="text-2xl font-semibold">Contact</h2>
+
+      <p className="text-zinc-400">
+        Open to remote startups and full-stack roles.
+      </p>
+    </section>
   );
 }
