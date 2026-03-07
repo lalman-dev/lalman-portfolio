@@ -59,6 +59,24 @@ export default function HackerNewsPage() {
             performance.
           </p>
         </section>
+
+        <div className="flex gap-6 pt-2">
+          <a
+            href="https://hn-news-two.vercel.app/"
+            target="_blank"
+            className="px-4 py-2 border border-zinc-700 rounded-lg text-sm hover:border-zinc-500 transition"
+          >
+            Live Demo
+          </a>
+
+          <a
+            href="https://github.com/lalman-dev/hn-news"
+            target="_blank"
+            className="px-4 py-2 border border-zinc-700 rounded-lg text-sm hover:border-zinc-500 transition"
+          >
+            GitHub
+          </a>
+        </div>
       </Container>
     </main>
   );

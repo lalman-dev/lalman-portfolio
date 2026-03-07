@@ -1,11 +1,16 @@
 import Container from "@/app/components/container";
+import { projects } from "@/app/lib/projects";
+
 import Link from "next/link";
+import FadeIn from "./components/fade-in";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen py-24">
       <Container className="space-y-32">
-        <Hero />
+        <FadeIn>
+          <Hero />
+        </FadeIn>
         <SelectedWork />
         <EngineeringPrinciples />
         <About />
@@ -17,29 +22,31 @@ export default function HomePage() {
 
 function Hero() {
   return (
-    <section className="space-y-6">
-      <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
+    <section className="space-y-8">
+      <p className="text-sm text-zinc-500 tracking-wide uppercase">Lalman</p>
+
+      <h1 className="text-4xl md:text-6xl font-semibold leading-[1.1] tracking-tight">
         Full-stack engineer with a frontend focus, building production-grade
-        systems with Next.js & TypeScript.
+        systems.
       </h1>
 
-      <p className="text-lg text-zinc-400 max-w-2xl">
-        I specialize in performant UI systems, SSR/CSR hybrid rendering, and
-        clean API integration — with hands-on backend experience in Node.js and
-        MongoDB.
+      <p className="text-lg text-zinc-400 max-w-2xl leading-relaxed">
+        I build performant UI systems using Next.js and TypeScript, with
+        hands-on backend experience in Node.js and MongoDB. Focused on
+        architecture, rendering strategy, and clean API integration.
       </p>
 
-      <div className="flex gap-6 pt-4">
+      <div className="flex gap-8 pt-4 text-sm">
         <a
           href="#work"
-          className="text-sm text-indigo-400 hover:text-indigo-300 transition"
+          className="text-indigo-400 hover:text-indigo-300 transition"
         >
           View Work →
         </a>
 
         <a
           href="mailto:your@email.com"
-          className="text-sm text-zinc-400 hover:text-white transition"
+          className="text-zinc-400 hover:text-white transition"
         >
           Contact
         </a>
@@ -54,29 +61,23 @@ function SelectedWork() {
       <h2 className="text-2xl font-semibold">Selected Work</h2>
 
       <div className="space-y-6">
-        <Link
-          href="/projects/hacker-news"
-          className="block border border-zinc-800 rounded-xl p-6 hover:border-zinc-600 transition"
-        >
-          <h3 className="text-lg font-medium">Hacker News Portal</h3>
-          <p className="text-zinc-400 mt-2">
-            Production-grade Hacker News interface built with Next.js App
-            Router, leveraging SSR for homepage performance and client-side
-            search for interactive filtering.
-          </p>
-        </Link>
+        {projects.map((project) => (
+          <Link
+            key={project.slug}
+            href={`/projects/${project.slug}`}
+            className="block border border-zinc-800 rounded-xl p-6 hover:border-zinc-600 transition"
+          >
+            <h3 className="text-xl font-semibold tracking-tight">
+              {project.title}
+            </h3>
 
-        <Link
-          href="/projects/ai-resume-studio"
-          className="block border border-zinc-800 rounded-xl p-6 hover:border-zinc-600 transition"
-        >
-          <h3 className="text-lg font-medium">AI Resume Studio</h3>
-          <p className="text-zinc-400 mt-2">
-            Full-stack resume builder with JWT authentication, AI-assisted
-            content enhancement, and robust API integration using Node.js and
-            MongoDB.
-          </p>
-        </Link>
+            <p className="text-sm text-zinc-500 mt-1">
+              {project.stack.join(" · ")}
+            </p>
+
+            <p className="text-zinc-400 mt-3">{project.description}</p>
+          </Link>
+        ))}
       </div>
     </section>
   );
@@ -119,7 +120,30 @@ function Contact() {
   return (
     <section className="space-y-6">
       <h2 className="text-2xl font-semibold">Contact</h2>
+      <div className="flex gap-6 text-sm text-zinc-400">
+        <a
+          href="https://github.com/lalman-dev"
+          target="_blank"
+          className="hover:text-white transition"
+        >
+          GitHub
+        </a>
 
+        <a
+          href="https://linkedin.com/in/lalman-dev"
+          target="_blank"
+          className="hover:text-white transition"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href="mailto:lalman.dev7@gmail.com"
+          className="hover:text-white transition"
+        >
+          Email
+        </a>
+      </div>
       <p className="text-zinc-400">
         Open to remote startups and full-stack roles.
       </p>
