@@ -1,4 +1,6 @@
 import Container from "@/app/components/container";
+import ProjectHero from "@/app/components/project-hero";
+import Architecture from "@/app/components/architecture";
 import Link from "next/link";
 
 export const metadata = {
@@ -18,48 +20,11 @@ export default function HackerNewsPage() {
           ← Back
         </Link>
 
-        <section className="space-y-6">
-          <h1 className="text-3xl md:text-4xl font-semibold">
-            Hacker News Portal
-          </h1>
-
-          <p className="text-zinc-400 max-w-3xl">
-            A production-grade Hacker News interface built using Next.js App
-            Router, designed to explore SSR, hybrid rendering, and structured
-            data fetching.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-xl font-semibold">Problem</h2>
-          <p className="text-zinc-400">
-            Most Hacker News clones rely entirely on client-side rendering,
-            which impacts performance and SEO. I wanted to build a version that
-            prioritized rendering strategy and architecture decisions.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-xl font-semibold">Architecture Decisions</h2>
-          <ul className="space-y-3 text-zinc-400">
-            <li>• SSR for homepage to optimize first contentful paint.</li>
-            <li>• Client-side search for responsive filtering.</li>
-            <li>• Centralized API abstraction layer.</li>
-            <li>• Loading & error boundaries using App Router conventions.</li>
-            <li>• Server and client component separation.</li>
-          </ul>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-xl font-semibold">Tradeoffs</h2>
-          <p className="text-zinc-400">
-            Fully static generation could improve caching, but real-time updates
-            were prioritized for user experience. In future iterations,
-            implementing incremental static regeneration would further optimize
-            performance.
-          </p>
-        </section>
-
+        <ProjectHero
+          title="Hacker News Portal"
+          description="Architecture-focused Hacker News interface exploring SSR and hybrid rendering with Next.js App Router."
+          image="/projects/hacker-news.png"
+        />
         <div className="flex gap-6 pt-2">
           <a
             href="https://hn-news-two.vercel.app/"
@@ -77,6 +42,24 @@ export default function HackerNewsPage() {
             GitHub
           </a>
         </div>
+        <Architecture
+          items={[
+            "Server-side rendering for homepage performance",
+            "Client-side search for instant filtering",
+            "App Router loading and error boundaries",
+            "Centralized API abstraction layer",
+            "Server and client component separation",
+          ]}
+        />
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold">Engineering Decisions</h2>
+
+          <p className="text-zinc-400">
+            Instead of relying entirely on client-side rendering, the homepage
+            is rendered on the server to improve first contentful paint and SEO
+            performance.
+          </p>
+        </section>
       </Container>
     </main>
   );
