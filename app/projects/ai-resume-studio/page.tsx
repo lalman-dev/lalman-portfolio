@@ -1,4 +1,5 @@
 import Container from "@/app/components/container";
+import ArchitectureDiagram from "@/app/components/architecture-diagram";
 import Link from "next/link";
 
 export const metadata = {
@@ -67,7 +68,6 @@ export default function AIResumeStudioPage() {
           >
             Live Demo
           </a>
-
           <a
             href="https://github.com/lalman-dev/AI-Resume-Studio"
             target="_blank"
@@ -76,6 +76,10 @@ export default function AIResumeStudioPage() {
             GitHub
           </a>
         </div>
+        <ArchitectureDiagram
+          src="/projects/resume-studio-architecture.png"
+          alt="Hacker News System Architecture"
+        />
       </Container>
     </main>
   );

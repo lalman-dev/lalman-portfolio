@@ -1,6 +1,7 @@
 import Container from "@/app/components/container";
 import ProjectHero from "@/app/components/project-hero";
 import Architecture from "@/app/components/architecture";
+import ArchitectureDiagram from "@/app/components/architecture-diagram";
 import Link from "next/link";
 
 export const metadata = {
@@ -50,6 +51,10 @@ export default function HackerNewsPage() {
             "Centralized API abstraction layer",
             "Server and client component separation",
           ]}
+        />
+        <ArchitectureDiagram
+          src="/projects/hacker-news-architecture.png"
+          alt="Hacker News System Architecture"
         />
         <section className="space-y-4">
           <h2 className="text-xl font-semibold">Engineering Decisions</h2>
